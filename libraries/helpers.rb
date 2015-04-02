@@ -77,6 +77,11 @@ module FFMPEG
           ['ubuntu'] => { 'default' => ['libx264-dev'] },
           'default' => ['libx264-dev']
         )
+      when '--enable-libvo-aacenc'
+        value_for_platform(
+          ['ubuntu'] => { 'default' => ['libvo-aacenc-dev'] },
+          'default' => ['libvo-aacenc-dev']
+        )
       else
         []
       end
