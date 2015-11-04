@@ -59,8 +59,9 @@ end
 bash 'compile_ffmpeg' do
   cwd "#{Chef::Config[:file_cache_path]}/ffmpeg"
   code <<-EOH
+    CPUS=`nproc`
     ./configure --prefix=#{node['ffmpeg']['prefix']} #{node['ffmpeg']['compile_flags'].join(' ')}
-    make clean && make -j32 && make install
+    make clean && make -j$CPUS && make install
   EOH
   creates creates_ffmpeg
 end
